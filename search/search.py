@@ -115,7 +115,6 @@ def aStarSearch(problem, heuristic=nullHeuristic):
   """Para se guardar as informações dos estados de borda, cria-se uma lista prioritária.
     [ ESTADO(coordenada)  ,  AÇÕES ATÉ ESTADO , CUSTO ATÉ ESTADO], Prioridade = CUSTO COM HEURÍSTICA ATÉ ESTADO """
   border = util.PriorityQueue()
-  border.push((problem.getStartState(), [], 0), 0)
 
   """ Começa inserindo o estado inicial à borda"""
   border.push((problem.getStartState(), [], 0), 0)
