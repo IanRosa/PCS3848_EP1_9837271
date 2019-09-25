@@ -108,18 +108,18 @@ def nullHeuristic(state, problem=None):
 
 def aStarSearch(problem, heuristic=nullHeuristic):
     
-  """Caso limite do começo ser o próprio final"""
+  """Caso limite do comeco ser o proprio final"""
   if problem.isGoalState(problem.getStartState()):
     return []
     
-  """Para se guardar as informações dos estados de borda, cria-se uma lista prioritária.
-    [ ESTADO(coordenada)  ,  AÇÕES ATÉ ESTADO , CUSTO ATÉ ESTADO], Prioridade = CUSTO COM HEURÍSTICA ATÉ ESTADO """
+  """Para se guardar as informacoes dos estados de borda, cria-se uma lista prioritaria.
+    [ ESTADO(coordenada)  ,  ACOES ATE ESTADO , CUSTO ATE ESTADO], Prioridade = CUSTO COM HEURISTICA ATE ESTADO """
   border = util.PriorityQueue()
 
-  """ Começa inserindo o estado inicial à borda"""
+  """ Comeca inserindo o estado inicial a borda"""
   border.push((problem.getStartState(), [], 0), 0)
 
-  """ Lista simples que guarda os estados(coordenadas) já visitadas"""
+  """ Lista simples que guarda os estados(coordenadas) ja visitadas"""
   expanded_and_explored = []
 
   while not border.isEmpty():
@@ -127,18 +127,18 @@ def aStarSearch(problem, heuristic=nullHeuristic):
       """ Retira-se um estado da borda """
       active_node, actions, old_cost = border.pop()
 
-      """ Case não tenha sido visitado """
+      """ Case nao tenha sido visitado """
       if active_node not in expanded_and_explored:
         
           """ Adiciona aos visitados"""
           expanded_and_explored.append(active_node)
 
-          """ Caso seja o fim, retorna as AÇÕES ATÉ ESTADO """
+          """ Caso seja o fim, retorna as ACOES ATE ESTADO """
           if problem.isGoalState(active_node):
               return actions
 
-          """ Para cada filho do estado atual, calcula a sequencia de ações para chegar nele, o custo para chegar nele, e o
-              custo com heurística para chegar nele. No final o insere na lista prioritária de borda"""
+          """ Para cada filho do estado atual, calcula a sequencia de acoes para chegar nele, o custo para chegar nele, e o
+              custo com heuristica para chegar nele. No final o insere na lista prioritaria de borda"""
           for next_node, action, child_cost in problem.getSuccessors(active_node):
               new_action = actions + [action]
               new_cost = old_cost + child_cost
